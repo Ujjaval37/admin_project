@@ -1,0 +1,71 @@
+<mat-card class="my-card">
+    <mat-card-header style="justify-content: center;">
+        <mat-card-title>
+            Registration
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="my-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+            <p>
+                <mat-form-field class="full-width">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="first name" formControlName="fname" name="fname" required>
+                    <!-- <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    *ngIf="myForm.controls['fname'].touched && myForm.controls['fname'].errors?.['required']">
+                    Please enter firstname!
+                </mat-hint>
+                <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    *ngIf="myForm.controls['fname'].touched && myForm.controls['fname'].errors?.['pattern']">
+                    Please enter correct firstname!
+                </mat-hint> -->
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="full-width">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="Last Name" formControlName="lname" name="lname" required>
+                    <!-- <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    *ngIf="myForm.controls['lname'].touched && myForm.controls['lname'].errors?.['required']">
+                    Please enter lastname!
+                </mat-hint>
+                <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    *ngIf="myForm.controls['lname'].touched && myForm.controls['lname'].errors?.['pattern']">
+                    Please enter correct lastname!
+                </mat-hint> -->
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="email" name="email" required>
+                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                        *ngIf="myForm.controls['email'].touched && myForm.controls['email'].errors?.['required']">
+                        Please enter email!
+                    </mat-hint>
+                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                        *ngIf="myForm.controls['email'].touched && myForm.controls['email'].errors?.['pattern']">
+                        Email address not well formed!
+                    </mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Password" name="password" required>
+                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                        *ngIf="myForm.controls['password'].touched && myForm.controls['password'].errors?.['required']">
+                        Please enter password!
+                    </mat-hint>
+                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                        *ngIf="myForm.controls['password'].touched && myForm.controls['password'].errors?.['pattern']">
+                        Please enter correct password!
+                    </mat-hint>
+                </mat-form-field>
+            </p>
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="mat-btn">
+        <button mat-raised-button (click)="onSubmit(myForm)" color="primary">REGISTER</button>
+        <button mat-raised-button (click)="reset()" color="primary">RESET</button>
+    </mat-card-actions>
+</mat-card>

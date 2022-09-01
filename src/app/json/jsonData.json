@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "firstname": "Sushay",
+        "lastname": "Jain",
+        "email": "sushay@infobeans.com",
+        "device": "HP Probook",
+        "model_no": "347869",
+        "password": "Sushay@123"
+    },
+    {
+        "id": 2,
+        "firstname": "Anshul",
+        "lastname": "Mehta",
+        "email": "anshul@infobeans.com",
+        "device": "HP Probook",
+        "model_no": "345009",
+        "password": "Anshul@123"
+    },
+    {
+        "id": 3,
+        "firstname": "Pravin",
+        "lastname": "Gupta",
+        "email": "pravin@infobeans.com",
+        "device": "Macbook Pro",
+        "model_no": "349813",
+        "password": "Pravin@123"
+    },
+    {
+        "id": 4,
+        "firstname": "Amitesh",
+        "lastname": "Namdev",
+        "email": "amitesh@infobeans.com",
+        "device": "Macbook Pro",
+        "model_no": "439987",
+        "password": "Amitesh@123"
+    },
+    {
+        "id": 5,
+        "firstname": "Rohit",
+        "lastname": "Negi",
+        "email": "rohit@infobeans.com",
+        "device": "Dell Inspiron 16",
+        "model_no": "219840",
+        "password": "Rohit@123"
+    },
+    {
+        "id": 6,
+        "firstname": "Vishal",
+        "lastname": "Soni",
+        "email": "vishal@infobeans.com",
+        "device": "Dell Lalitude 15",
+        "model_no": "337761",
+        "password": "Vishal@123"
+    }
+]

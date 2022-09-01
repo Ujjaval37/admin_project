@@ -1,0 +1,52 @@
+<mat-card class="my-card">
+    <mat-card-header style="justify-content: center;">
+        <mat-card-title>
+            Login
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="my-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+            <p>
+                <mat-form-field class="full-width">
+                    <mat-label>Email</mat-label>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <input matInput type="email" formControlName="email" placeholder="Email" name="email" required>
+                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                        *ngIf="myForm.controls['email'].touched && myForm.controls['email'].errors?.['required']">
+                        Please enter email!
+                    </mat-hint>
+                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                        *ngIf="myForm.controls['email'].touched && myForm.controls['email'].errors?.['pattern']">
+                        Email address not well formed!
+                    </mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"
+                        placeholder="Password" name="password" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                        *ngIf="myForm.controls['password'].touched && myForm.controls['password'].errors?.['required']">
+                        Please enter password!
+                    </mat-hint>
+                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                        *ngIf="myForm.controls['password'].touched && myForm.controls['password'].errors?.['pattern']">
+                        Please enter correct password!
+                    </mat-hint>
+                </mat-form-field>
+            </p>
+            <div>
+                <a routerLink="/forgotpassword">Forgot Password?</a>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="btn-center">
+        <button mat-raised-button class="mat-btn" (click)="onSubmit(myForm)" color="primary">LOGIN</button>
+    </mat-card-actions>
+    <div class="my-form">
+        <a routerLink="/registrationcomponent">Not a member? Signup</a> <br>
+        <a routerLink="/dashboard">Dashborad</a>
+    </div>
+</mat-card>
