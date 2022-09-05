@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -12,21 +13,34 @@ export class HomeComponent implements OnInit {
   imageAlt = 'Infobeans';
   isAuthenticated = false;
   user: any;
-  
+  shouldShow = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.isAuthenticate.subscribe((res : any) => {
       this.isAuthenticated = res;
-      this.user = this.authService.currentUser;
-      console.log(this.user)
+      if(res){
+        this.authService.currentUser.subscribe((res : any) => {
+          this.user = res;
+        })
+      }
     })
   }
 
+  clickMe() {
+    this.router.navigateByUrl('/login');
+  }
+  toggle(){
+    this.shouldShow = !this.shouldShow;
+  }
+  
+
   logoutData() {
     this.authService.isAuthenticate.next(false);
-    this.router.navigateByUrl('/logincomponent');
+    this.authService.currentUser.next(null)
+    this.user = null;
+    localStorage.removeItem('user');
+    this.router.navigateByUrl('/login');
   }
-
 }

@@ -4,68 +4,95 @@
             Registration
         </mat-card-title>
     </mat-card-header>
-    <mat-card-content>
-        <form class="my-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <form class="my-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+        <mat-card-content>
             <p>
                 <mat-form-field class="full-width">
                     <mat-label>First Name</mat-label>
+                    <mat-icon matSuffix>account_box</mat-icon>
                     <input matInput placeholder="first name" formControlName="fname" name="fname" required>
-                    <!-- <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
-                    *ngIf="myForm.controls['fname'].touched && myForm.controls['fname'].errors?.['required']">
-                    Please enter firstname!
-                </mat-hint>
-                <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
-                    *ngIf="myForm.controls['fname'].touched && myForm.controls['fname'].errors?.['pattern']">
-                    Please enter correct firstname!
-                </mat-hint> -->
+                    <mat-error class="mb-4 text-end w-100"
+                        *ngIf="myForm.controls['fname'].touched && myForm.controls['fname'].errors?.['required']">
+                        Please enter firstname!
+                    </mat-error>
+                    <mat-error class="mb-4 text-end w-100"
+                        *ngIf="myForm.controls['fname'].touched && myForm.controls['fname'].errors?.['pattern']">
+                        Please enter correct firstname!
+                    </mat-error>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="full-width">
                     <mat-label>Last Name</mat-label>
+                    <mat-icon matSuffix>account_box</mat-icon>
                     <input matInput placeholder="Last Name" formControlName="lname" name="lname" required>
-                    <!-- <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
-                    *ngIf="myForm.controls['lname'].touched && myForm.controls['lname'].errors?.['required']">
-                    Please enter lastname!
-                </mat-hint>
-                <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
-                    *ngIf="myForm.controls['lname'].touched && myForm.controls['lname'].errors?.['pattern']">
-                    Please enter correct lastname!
-                </mat-hint> -->
+                    <mat-error class="mb-4 text-end w-100"
+                        *ngIf="myForm.controls['lname'].touched && myForm.controls['lname'].errors?.['required']">
+                        Please enter lastname!
+                    </mat-error>
+                    <mat-error class="mb-4 text-end w-100"
+                        *ngIf="myForm.controls['lname'].touched && myForm.controls['lname'].errors?.['pattern']">
+                        Please enter correct lastname!
+                    </mat-error>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="full-width">
                     <mat-label>Email</mat-label>
+                    <mat-icon matSuffix>email</mat-icon>
                     <input matInput placeholder="Email" formControlName="email" name="email" required>
-                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    <mat-error class="mb-4 text-end w-100"
                         *ngIf="myForm.controls['email'].touched && myForm.controls['email'].errors?.['required']">
                         Please enter email!
-                    </mat-hint>
-                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    </mat-error>
+                    <mat-error class="mb-4 text-end w-100"
                         *ngIf="myForm.controls['email'].touched && myForm.controls['email'].errors?.['pattern']">
                         Email address not well formed!
-                    </mat-hint>
+                    </mat-error>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="full-width">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password" formControlName="password" placeholder="Password" name="password" required>
-                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"
+                        placeholder="Password" name="password" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error class="mb-4 text-end w-100"
                         *ngIf="myForm.controls['password'].touched && myForm.controls['password'].errors?.['required']">
                         Please enter password!
-                    </mat-hint>
-                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    </mat-error>
+                    <mat-error class="mb-4 text-end w-100"
                         *ngIf="myForm.controls['password'].touched && myForm.controls['password'].errors?.['pattern']">
-                        Please enter correct password!
-                    </mat-hint>
+                        Password should be..(minimum 8 characters, one upper letter with alphabates, one special
+                        character)
+                    </mat-error>
                 </mat-form-field>
             </p>
-        </form>
-    </mat-card-content>
-    <mat-card-actions class="mat-btn">
-        <button mat-raised-button (click)="onSubmit(myForm)" color="primary">REGISTER</button>
-        <button mat-raised-button (click)="reset()" color="primary">RESET</button>
-    </mat-card-actions>
+            <p>
+                <mat-form-field class="full-width">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput formControlName="confirmPassword" [type]="hideConfirm ? 'password' : 'text'"
+                        placeholder="Confirm Password" name="confirmPassword" required>
+                    <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility_off' :
+                        'visibility'}}</mat-icon>
+                    <mat-error class="mb-4 text-end w-100"
+                        *ngIf="myForm.controls['confirmPassword'].touched && myForm.controls['confirmPassword'].errors?.['required']">
+                        Please enter confirm password!
+                    </mat-error>
+                    <mat-error class="mb-4 text-end w-100"
+                        *ngIf="myForm.controls['confirmPassword'].touched && myForm.controls['confirmPassword'].errors?.['pattern']">
+                        Password & Confirm Password are not matched!
+                    </mat-error>
+                </mat-form-field>
+            </p>
+        </mat-card-content>
+        <mat-card-actions class="mat-btn">
+            <button mat-raised-button [disabled]="!myForm.valid" (click)="onSubmit(myForm)"
+                color="primary">REGISTER</button>
+            <button mat-raised-button (click)="reset()">RESET</button>
+        </mat-card-actions>
+    </form>
+    <div class="my-form">
+        Already a member? <a routerLink="/login">Login</a> <br>
+    </div>
 </mat-card>

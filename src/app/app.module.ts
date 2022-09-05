@@ -13,6 +13,7 @@ import { ForgotpasswordComponent } from './component/forgotpassword/forgotpasswo
 import { ResetpassowrdComponent } from './component/resetpassowrd/resetpassowrd.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { UserComponent } from './component/user/user.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserComponent } from './component/user/user.component';
     UserComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -9,9 +9,11 @@ import { ResetpassowrdComponent } from './component/resetpassowrd/resetpassowrd.
 import { AuthGuard } from './gaurd/auth.guard';
 
 const routes: Routes = [
-  { path: 'logincomponent', component: LoginComponent},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  { path: 'registrationcomponent', component: RegistrationComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'resetpassword', component: ResetpassowrdComponent },
   { path: '**', component: PagenotfoundcomponentComponent }
@@ -21,5 +23,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 }

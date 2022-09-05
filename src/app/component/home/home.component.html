@@ -1,14 +1,14 @@
 <mat-toolbar color="primary" class="my-home">
     <mat-toolbar-row>
-        <img [src]="imageSrc" [alt]="imageAlt" />
+        <img [src]="imageSrc" [alt]="imageAlt" (click)="clickMe()"/>
         <span class="spacer"></span>
         <div class="auth" *ngIf="!isAuthenticated">
-        <a mat-button routerLink="/logincomponent">Login</a>
-        <a mat-button routerLink="/registrationcomponent">Register</a>
+            <a mat-button *ngIf="!shouldShow" (click)="toggle()" routerLink="/login">Login</a>
+            <a mat-button *ngIf="shouldShow" (click)="toggle()" routerLink="/registration">Register</a>
         </div>
-        <div *ngIf="isAuthenticated">
-            <button mat-raised-button color="primary" (click)="logoutData()">Logout</button>
+        <div *ngIf="isAuthenticated && user">
             {{user.firstname}}
+            <button mat-raised-button color="primary" (click)="logoutData()">Logout</button>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

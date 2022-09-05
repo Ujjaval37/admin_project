@@ -4,21 +4,21 @@
             Login
         </mat-card-title>
     </mat-card-header>
-    <mat-card-content>
-        <form class="my-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <form class="my-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+        <mat-card-content>
             <p>
                 <mat-form-field class="full-width">
                     <mat-label>Email</mat-label>
                     <mat-icon matSuffix>email</mat-icon>
                     <input matInput type="email" formControlName="email" placeholder="Email" name="email" required>
-                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    <mat-error class="mb-4 text-end w-100"
                         *ngIf="myForm.controls['email'].touched && myForm.controls['email'].errors?.['required']">
                         Please enter email!
-                    </mat-hint>
-                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    </mat-error>
+                    <mat-error class="mb-4 text-end w-100"
                         *ngIf="myForm.controls['email'].touched && myForm.controls['email'].errors?.['pattern']">
                         Email address not well formed!
-                    </mat-hint>
+                    </mat-error>
                 </mat-form-field>
             </p>
             <p>
@@ -27,26 +27,27 @@
                     <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"
                         placeholder="Password" name="password" required>
                     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    <mat-error class="mb-4 text-end w-100"
                         *ngIf="myForm.controls['password'].touched && myForm.controls['password'].errors?.['required']">
                         Please enter password!
-                    </mat-hint>
-                    <mat-hint class="mb-4 text-end w-100" style="font-size: 15px;"
+                    </mat-error>
+                    <mat-error class="mb-4 text-end w-100"
                         *ngIf="myForm.controls['password'].touched && myForm.controls['password'].errors?.['pattern']">
-                        Please enter correct password!
-                    </mat-hint>
+                        Password should be..(minimum 8 characters, one upper letter with alphabates, one special
+                        character)
+                    </mat-error>
                 </mat-form-field>
             </p>
             <div>
                 <a routerLink="/forgotpassword">Forgot Password?</a>
+                <!-- <a routerLink="/resetpassword">Reset Password?</a> -->
             </div>
-        </form>
-    </mat-card-content>
-    <mat-card-actions class="btn-center">
-        <button mat-raised-button class="mat-btn" (click)="onSubmit(myForm)" color="primary">LOGIN</button>
-    </mat-card-actions>
+        </mat-card-content>
+        <mat-card-actions class="btn-center">
+            <button mat-raised-button class="mat-btn" type="submit" color="primary">LOGIN</button>
+        </mat-card-actions>
+    </form>
     <div class="my-form">
-        <a routerLink="/registrationcomponent">Not a member? Signup</a> <br>
-        <a routerLink="/dashboard">Dashborad</a>
+        Not a member? <a routerLink="/registration">Signup</a> <br>
     </div>
 </mat-card>

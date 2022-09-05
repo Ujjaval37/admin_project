@@ -18,10 +18,5 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(userData, "sdf");
-    //   fetch('../../json/jasonData.json').then(res => res.json())
-    //   .then(fetchData => {
-    //     this.fetchData = fetchData;
-    //   });
-    // }
   }
 }
